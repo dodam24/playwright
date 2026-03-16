@@ -32,7 +32,7 @@ test("playwright events playground", async ({ page, context }) => {
     const popup = await popupPromise;
     await popup.goto("https://example.com");
 
-    // 이벤트 리스너 등록 (pag.on)
+    // 이벤트 리스너 등록 (page.on)
     // 네트워크 요청 발생 시 실행
     page.on("request", (request) => {
         console.log("Request sent:", request.url());
@@ -45,7 +45,7 @@ test("playwright events playground", async ({ page, context }) => {
 
     // 이벤트 리스너 제거
     page.off("requestfinished", listener);
-    await page.goto("https://openstreetmap.org");
+    await page.goto("https://www.openstreetmap.org");
 
     // 일회성 이벤트 처리 (page.once)
     page.once("dialog", (dialog) => {
@@ -81,7 +81,7 @@ test("playwright events playground", async ({ page, context }) => {
 
     // Request 이벤트
     // 특정 API 요청 감지
-    const apiRequest = await page.waitForRequest("**/aopi/**");
+    const apiRequest = await page.waitForRequest("**/api/**");
     console.log("API Request:", apiRequest.url());
 
     // Response 이벤트
